@@ -12,7 +12,7 @@
   shell: "(sleep {{ reboot_delay }} && {{ reboot_command }} &)"
   async: 1
   poll: 0
-  ignore_errors: yes
+  ignore_errors: true
   when:
     - ansible_virtualization_type != "docker"
     - needsrestarting.rc == 1 or reboot_check_for_needs_restarting_for_debian.stat.exists
