@@ -1,0 +1,4 @@
+---
+repository:
+  description: Reboot a system.
+  homepage: https://github.com/tehtbl/ansible-role-reboot
