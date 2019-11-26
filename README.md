@@ -24,7 +24,6 @@ This example is taken from `molecule/default/playbook.yml`:
   roles:
     - role: tehtbl.bootstrap
     - role: tehtbl.reboot
-      reboot_parameter: value
 ```
 
 Role Variables
@@ -38,6 +37,18 @@ These variables are set in `defaults/main.yml`:
 # defaults file for reboot
 # ------------------------------------------------------------------------
 
+# Some operating systems can determine if a reboot is required. This
+# parameter can be set to always reboot.
+reboot_always: true
+
+# How long to wait before sending a reboot.
+reboot_delay: 4
+
+# Number of seconds to wait before checking if the machine is up.
+reboot_up_delay: 8
+
+# You can specify a message for rebooting, easier for auditing.
+reboot_message: "reboot by Ansible role tehtbl.reboot"
 
 ```
 
