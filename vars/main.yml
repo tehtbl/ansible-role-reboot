@@ -5,6 +5,5 @@
 
 _reboot_command:
   default: shutdown -r now {{ reboot_message }}
-  Alpine: reboot
 
 reboot_command: "{{ _reboot_command[ansible_os_family] | default(_reboot_command['default']) }}"

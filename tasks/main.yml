@@ -15,9 +15,8 @@
   ignore_errors: true
   when:
     - ansible_virtualization_type != "docker"
-    - needsrestarting.rc == 1 or
-      reboot_check_for_needs_restarting_for_debian.stat.exists or
-      reboot_force
+    - reboot_always or
+      reboot_check_for_needs_restarting_for_debian.stat.exists
   notify:
     - 1 wait for the start of reboot
     - 2 wait for the machine to be up
