@@ -1,0 +1,8 @@
+---
+gid: 44922
+name: reboot
+desc: Reboot your system if needed.
+reqs:
+  - tehtbl.bootstrap
+tags:
+  - reboot
