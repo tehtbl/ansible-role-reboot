@@ -1,29 +1,40 @@
-<!-- get id via: ansible-galaxy info tehtbl.skeleton | grep -i "id:" -->
+<!-- get id via: ansible-galaxy info tehtbl.reboot | grep -i "id:" -->
 <a href="https://galaxy.ansible.com/tehtbl/reboot"><img src="https://img.shields.io/ansible/role/44922"/></a> <a href="https://galaxy.ansible.com/tehtbl/reboot"><img src="https://img.shields.io/ansible/quality/44922"/></a> <a href="https://travis-ci.org/tehtbl/ansible-role-reboot"><img src="https://travis-ci.org/tehtbl/ansible-role-reboot.svg?branch=master" alt="Build status"/></a>
 
 Role Description
 ================
 
-Reboot a system.
+Reboot your system if needed.
 
 Example Playbook
 ================
 
-This example is taken from `molecule/default/playbook.yml`:
+This example is taken from `molecule/default/playbook.yml` and is tested on each push, pull request and release.
 
 ```yaml
 ---
-# ------------------------------------------------------------------------
-# Install and configure reboot
-# ------------------------------------------------------------------------
-- name: reboot
+- name: Converge
   hosts: all
   become: true
   gather_facts: false
 
   roles:
-    - role: tehtbl.bootstrap
-    - role: tehtbl.reboot
+    - tehtbl.role: reboot
+
+```
+
+The machine you are running this on, may need to be prepared, I use this playbook to ensure everything is in place to let the role work.
+
+```yaml
+---
+- name: Prepare
+  hosts: all
+  become: true
+  gather_facts: false
+
+  roles:
+    - tehtbl.role: tehtbl.bootstrap
+
 ```
 
 Role Variables
@@ -39,7 +50,7 @@ These variables are set in `defaults/main.yml`:
 
 # Some operating systems can determine if a reboot is required. This
 # parameter can be set to always reboot.
-reboot_always: true
+reboot_always: false
 
 # How long to wait before sending a reboot.
 reboot_delay: 4
@@ -56,12 +67,11 @@ Requirements
 ============
 
 - Access to a repository containing packages, likely on the internet.
-- A recent version of Ansible (Tests run on the current, previous and next release of Ansible).
+- A recent version of Ansible. (Tests run on the current, previous and next release of Ansible.)
 
 The following roles can be installed to ensure all requirements are met, using `ansible-galaxy install -r requirements.yml`:
 
 ```yaml
----
 - tehtbl.bootstrap
 
 ```
@@ -144,7 +154,7 @@ vagrant up
 License
 =======
 
-GNU General Public License v3.0
+MIT License
 
 Author Information
 ==================

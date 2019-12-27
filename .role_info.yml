@@ -2,7 +2,7 @@
 gid: 44922
 name: reboot
 desc: Reboot your system if needed.
-reqs:
+deps:
   - tehtbl.bootstrap
 tags:
   - reboot
